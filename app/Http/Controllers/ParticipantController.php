@@ -29,7 +29,8 @@ class ParticipantController extends Controller
    			"lastname" => 'required|max:25',
    			"cnic" => 'required|max:16',
    			"designation" => 'max:100',
-   			"department" => 'max:50',
+        "department" => 'max:50',
+   			"gender" => 'required|max:10',
    			"province" => 'min:2',
    			"district" => 'max:50',
    			"cell_number" => 'max:20',
@@ -43,7 +44,8 @@ class ParticipantController extends Controller
    		$participant->last_name= $request->lastname;
    		$participant->cnic= $request->cnic;
    		$participant->designation= $request->designation;
-   		$participant->department= $request->department;
+      $participant->department= $request->department;
+   		$participant->gender= $request->gender;
    		$participant->province = $request->province;
    		$participant->landline= $request->phone;
       	$participant->district= $request->district;
@@ -56,7 +58,7 @@ class ParticipantController extends Controller
    		
    		$participant->save();
 
-   		Session::flash('message', 'Step 1 - Personal Data Successfull Added. <script> swal("Added", "You have added a new participant!", "success"); </script> '); 
+   		Session::flash('message', 'Participant Personal Data Successfull Added. <script> swal("Added", "You have added a new participant!", "success"); </script> '); 
    		return redirect('participant/list');
    	}
 

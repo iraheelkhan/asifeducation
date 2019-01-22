@@ -33,6 +33,13 @@
                         <label for="cnic" class=" form-control-label">CNIC/Passport</label>
                         <input type="text" id="cnic" placeholder="Enter your CNIC" class="form-control" name="cnic">
                     </div>
+                    <div class="form-group">
+                        <label for="cnic" class=" form-control-label">Gender</label>
+                        <select name="gender" class="form-control">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
                     <div class="row form-group">
                         <div class="col-8">
                             <div class="form-group">

@@ -41,3 +41,14 @@ Route::get('participant/list', 'ParticipantController@list')->name('ParticipantL
 Route::get('training/add', 'TrainingController@add')->name('TrainingAdd');
 Route::post('training/create', 'TrainingController@create')->name('TrainingCreate');
 Route::get('training/list', 'TrainingController@list')->name('TrainingList');
+Route::post('training/delete', 'TrainingController@delete')->name('TrainingDelete');
+Route::post('training/view', 'TrainingController@view')->name('TrainingView');
+
+//Enrolment routes goes here
+Route::post('enrol/participant', 'EnrolmentController@create')->name('EnrolmentCreate');
+
+
+// resource person routes goes here
+Route::get('resource/add', 'ResourcePersonController@add')->name('ResourcePersonAdd');
+Route::post('resource/create', 'ResourcePersonController@create')->name('ResourcePersonCreate');
+Route::get('resource/list', 'ResourcePersonController@list')->name('ResourcePersonList');

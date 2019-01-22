@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Training;
+use App\Participant;
+use App\Enrolment;
 use Session;
 class TrainingController extends Controller
 {
@@ -29,7 +31,6 @@ class TrainingController extends Controller
    			"category" => 'max:50',
    			"venue" => 'min:2',
    		]);
-      dd($validated);
    		$training->title= $request->title;
    		$training->description= $request->description;
    		$training->date= $request->date;
@@ -43,7 +44,7 @@ class TrainingController extends Controller
    		
    		$training->save();
 
-   		Session::flash('message', 'Training Succesfully Added <script> swal("Added", "Training Succesfully Added", "success"); </script> '); 
+   		//Session::flash('message', 'Training Succesfully Added <script> swal("Added", "Training Succesfully Added", "success"); </script> '); 
       $msg = ['okay'=>'perfect coding of the day'];
    		return response()->json($msg);
    	}
@@ -53,4 +54,30 @@ class TrainingController extends Controller
    		$data = Training::all();
    		return view('training.training_list')->with('data', $data);
    	}
+
+    public function delete(Request $request){
+      $id = $request->id;
+      $data = Training::findorFail($id);
+      $data->delete();
+      $msg = [
+          'code'=>1,
+          'messsage'=>'Training Deleted'];
+      if($request->ajax()){
+        return response()->json($msg);
+      }
+      Session::flash('message', 'Training Succesfully Deleted <script> swal("Added", "Training Succesfully Added", "success"); </script> ');
+      return redirect('training/list');
+          
+    }
+
+    public function view(Request $request){
+        $id = $request->id;
+        $data = Training::findorFail($id);
+        $enrolls = Enrolment::where('training_id',$id)->get();
+        $participant = Participant::all();
+
+        return view('training.training_view')->with('data',$data)->with('participant', $participant)->with('enrolls', $enrolls);
+
+      }
+
 }

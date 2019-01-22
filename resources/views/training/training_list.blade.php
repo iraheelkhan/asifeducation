@@ -15,12 +15,13 @@ Participant List
                   <h2 class="card-title">Training List</h2>
                  
                   <div class="">
-                    <table class="table" id="myTable"> 
+                    <table class="table table-hover " id="mytable"> 
                       <thead>
                         <tr>
                           <th>S.No</th>
-                          <th>Title</th>
-                          <th>Description</th>
+                          <th>Action</th>
+                          <th width="180px">Title</th>
+                          <th width="180px">Description</th>
                           <th>Date</th>
                           <th>Time</th>
                           <th>Status</th>
@@ -36,13 +37,16 @@ Participant List
                         <tr>
                               <td> <?= $index++ ?></td>
                               <td> 
-                                <form action="" method="POST">
-                                  {{ method_field('DELETE') }}
+                                <form action="{{route('TrainingDelete')}}" method="POST">
                                   {{ csrf_field() }}
                                   <input type="hidden" name="id" value="{{$list->id}}">
-                                  <button type="submit" class="btn btn-danger">D</button>
+                                  <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                                 </form>
-                                  <a href="" class="btn btn-info">V</a>
+                                <form action="{{route('TrainingView')}}" method="POST">
+                                  {{ csrf_field() }}
+                                <br>
+                                <input type="hidden" name="id" value="{{$list->id}}">
+                                  <button  type="submit" class="btn btn-info"><i class="far fa-eye"></i></button>
                                 
                               </td>
                               <td>{{ $list->title }}</td>
@@ -66,7 +70,7 @@ Participant List
 
   <script type="text/javascript">
     $(document).ready( function () {
-        $('#myTable').dataTable( {
+        $('#mytable').dataTable( {
               "scrollX": true
             } );
         });
@@ -173,7 +177,11 @@ Participant List
             //     'time': time,
             //     'venue': venue,
             // },
+            /// you can use that single function for the input to get all the data to the  controller. 
+            
             data: $("#trainingform").serialize(),
+            // this serialize function will automatically get all the data from the form
+            // 
             success: function(data){
                 swal("Added", "Training Succesfully Added", "success");
             },
@@ -184,4 +192,5 @@ Participant List
         
     });
 </script>
+  
 @endsection

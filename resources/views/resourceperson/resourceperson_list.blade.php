@@ -11,7 +11,7 @@ Participant List
                   @if(Session::has('message'))
                     <p class="alert alert-success">{!! Session::get('message') !!}</p>
                   @endif
-                  <a href="{{route('ParticipantAdd') }}" class="btn btn-primary">New Participant</a>
+                  <a href="{{route('ResourcePersonAdd') }}" class="btn btn-primary">New Participant</a>
                   <h2 class="card-title">Participant List</h2>
                  
                   <div class="">
