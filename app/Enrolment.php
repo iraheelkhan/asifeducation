@@ -12,6 +12,8 @@ class Enrolment extends Model
     }
 
     public function training(){
-    	return $this->belongsTo('App\Training')->withDefault();
+    	return $this->hasOne('App\Training', 'id', 'training_id')->withDefault();
     }
+
+
 }

@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 	<html lang="en">
 
 	<head>
@@ -30,7 +30,7 @@
         <link href="{{asset('public/css/theme.css')}}" rel="stylesheet" media="all">
         <script src="{{ asset('public/js/jquery-3.2.1.min.js')}}"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <link href="{{asset('public/css/custom.css')}}" rel="stylesheet" media="all">
+        
         <link href="{{asset('public/css/datatables.min.css')}}" rel="stylesheet" media="all">
         <script src="{{asset('public/js/datatables.min.js')}}"></script>
 

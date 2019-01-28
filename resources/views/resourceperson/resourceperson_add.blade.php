@@ -5,7 +5,7 @@
         <div class="col-lg-9 offset-md-1 mt-5">
             <div class="card">
                 <div class="card-header">
-                    <strong>Participant</strong>
+                    <strong>Resource Person</strong>
                     <small> Details</small>
                 </div>
 
@@ -33,18 +33,17 @@
                         <label for="cnic" class=" form-control-label">CNIC/Passport</label>
                         <input type="text" id="cnic" placeholder="Enter your CNIC" class="form-control" name="cnic" value="{{old('cnic')}}">
                     </div>
-                    <div class="form-group">
-                        <label for="cnic" class=" form-control-label">Gender</label>
-                        <select name="gender"  value="{{old('gender')}}" class="form-control">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                    </div>
                     <div class="row form-group">
                         <div class="col-8">
                             <div class="form-group">
-                                <label for="designation" class=" form-control-label">Designation</label>
-                                <input type="text" id="designation" placeholder="Enter your designation" class="form-control" name="designation" value="{{old('designation')}}">
+                                <label for="designation" class=" form-control-label">Vendor No</label>
+                                <input type="text" id="vendor_no" placeholder="Enter your vendor no" class="form-control" name="vendor_no" value="{{old('vendor_no')}}">
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="form-group">
+                                <label for="bank" class=" form-control-label">Bank</label>
+                                <input type="text" id="bank" placeholder="Enter your bank name" class="form-control" name="bank" value="{{old('bank')}}">
                             </div>
                         </div>
                         <div class="col-8">
@@ -56,7 +55,7 @@
                     </div>
                     <div class="form-group">
                         <label for="email" class=" form-control-label">Email</label>
-                        <input type="email" id="email" placeholder="www.cvmaker.com.pk" class="form-control" name="email" value="{{old('email')}}">
+                        <input type="email" id="email" placeholder="email@education.com.pk" class="form-control" name="email" value="{{old('email')}}">
                     </div>  
                     <div class="form-group">
                         <input class="form-control btn btn-primary" type="submit" name="submit">

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Training;
 use App\Participant;
 use App\Enrolment;
+use App\User;
+use App\ResourcePerson;
 use Session;
 class TrainingController extends Controller
 {
@@ -13,12 +15,12 @@ class TrainingController extends Controller
     	 $this->middleware('auth');
     }
     public function add(){
-		  return view('training.training_add');
-	   }
-    public function show(){
+      $users = User::where('role','cordinator')->get();
+      $resourceperson = ResourcePerson::all();
+		  return view('training.training_add')->with('users',$users)->with('resourceperson',$resourceperson);
+	  }
 
-    	return view('personal.showpersonal');
-    }
+    
    
    	public function create(Request $request)
    	{
@@ -26,27 +28,31 @@ class TrainingController extends Controller
    		$validated = $request->validate([	
    			"title" => 'required|max:100',
    			"description" => 'required|max:400',
-   			"date" => 'required',
-   			"time" => 'required|max:100',
+        "from_date" => 'required|max:100',
+   			"to_date" => 'required|max:100',
    			"category" => 'max:50',
-   			"venue" => 'min:2',
+        "venue" => 'min:2',
+        "user_id" => 'required',
+   			"resourceperson_id" => 'required',
    		]);
    		$training->title= $request->title;
    		$training->description= $request->description;
-   		$training->date= $request->date;
-   		$training->time= $request->time;
+      $training->from_date= $request->from_date;
+   		$training->to_date= $request->to_date;
    		$training->category= $request->category;
-      $training->venue = $request->venue;
+      $training->user_id = $request->user_id;
+      $training->resource_person_id = $request->resourceperson_id;
    		$training->status = "active";
-   		
-   		//$training->email = $user_email;
-   		//$training->user_id = $userid;
-   		
    		$training->save();
 
-   		//Session::flash('message', 'Training Succesfully Added <script> swal("Added", "Training Succesfully Added", "success"); </script> '); 
-      $msg = ['okay'=>'perfect coding of the day'];
-   		return response()->json($msg);
+
+      if($request->ajax()){
+        $msg = ['okay'=>'perfect coding of the day'];
+      return response()->json($msg);
+      }
+   		Session::flash('message', 'Training Succesfully Added <script> swal("Added", "Training Succesfully Added", "success"); </script> ');
+      return redirect('training/list');
+      
    	}
 
    	public function list()
@@ -55,6 +61,48 @@ class TrainingController extends Controller
    		return view('training.training_list')->with('data', $data);
    	}
 
+    public function edit(Request $request){
+      $id = $request->training_id;
+      $training = Training::findorFail($id);
+      $resourceperson = ResourcePerson::all();
+      $cordinator = User::where('role', 'cordinator')->get();
+
+      return view('training.training_edit')->with('data',$training)->with('resourceperson' , $resourceperson)->with('cordinators', $cordinator);
+    }
+
+    public function update(Request $request)
+    {
+      $id = $request->training_id;
+      $training = Training::findorFail($id);
+      $validated = $request->validate([ 
+        "title" => 'required|max:100',
+        "description" => 'required|max:400',
+        "from_date" => 'required|max:100',
+        "to_date" => 'required|max:100',
+        "category" => 'max:50',
+        "venue" => 'min:2',
+        "user_id" => 'required',
+        "resourceperson_id" => 'required',
+      ]);
+      $training->title= $request->title;
+      $training->description= $request->description;
+      $training->from_date= $request->from_date;
+      $training->to_date= $request->to_date;
+      $training->category= $request->category;
+      $training->user_id = $request->user_id;
+      $training->resource_person_id = $request->resourceperson_id;
+      $training->status = "active";
+      $training->update();
+
+
+      if($request->ajax()){
+        $msg = ['okay'=>'perfect coding of the day'];
+      return response()->json($msg);
+      }
+      Session::flash('message', 'Training Succesfully Edited <script> swal("Updated", "Training Succesfully Edited", "success"); </script> ');
+      return redirect('training/list');
+      
+    }
     public function delete(Request $request){
       $id = $request->id;
       $data = Training::findorFail($id);
@@ -65,7 +113,7 @@ class TrainingController extends Controller
       if($request->ajax()){
         return response()->json($msg);
       }
-      Session::flash('message', 'Training Succesfully Deleted <script> swal("Added", "Training Succesfully Added", "success"); </script> ');
+      Session::flash('message', 'Training Deleted <script> swal("Added", "Training Succesfully Added", "success"); </script> ');
       return redirect('training/list');
           
     }

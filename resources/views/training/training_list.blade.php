@@ -1,4 +1,4 @@
-@extends('layouts.master');
+  @extends('layouts.master');
 @section('title')
 Participant List
 @endsection
@@ -11,7 +11,7 @@ Participant List
                   @if(Session::has('message'))
                     <p class="alert alert-success">{!! Session::get('message') !!}</p>
                   @endif
-                  <a  data-toggle="modal" data-target="#ajaxModal"  href="#ajaxModal" class="btn btn-primary">New Training</a>
+                  <a href="{{route('TrainingAdd')}}" class="btn btn-primary">New Training</a>
                   <h2 class="card-title">Training List</h2>
                  
                   <div class="">
@@ -22,11 +22,12 @@ Participant List
                           <th>Action</th>
                           <th width="180px">Title</th>
                           <th width="180px">Description</th>
-                          <th>Date</th>
-                          <th>Time</th>
+                          <th>From Date</th>
+                          <th>To Time</th>
                           <th>Status</th>
                           <th>Category</th>
-                          <th>Venue</th>
+                          <th>Resource Person</th>
+                          <th>Cordinator</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -47,15 +48,25 @@ Participant List
                                 <br>
                                 <input type="hidden" name="id" value="{{$list->id}}">
                                   <button  type="submit" class="btn btn-info"><i class="far fa-eye"></i></button>
+                                </form>
+
+                                <form action="{{route('TrainingEdit')}}" method="POST">
+                                  {{ csrf_field() }}
+                                <br>
+                                <input type="hidden" name="training_id" value="{{$list->id}}">
+                                  <button  type="submit" class="btn btn-warning"><i class="far fa-edit"></i></button>
+                                </form>
                                 
                               </td>
+
                               <td>{{ $list->title }}</td>
                               <td> {{ $list->description }}</td>
-                              <td> {{ $list->date }}</td>
-                              <td> {{ $list->time }}</td>
+                              <td> {{ $list->from_date }}</td>
+                              <td> {{ $list->to_date }}</td>
                               <td> {{ $list->status }}</td>
                               <td> {{ $list->category}}</td>
-                              <td> {{ $list->venue }}</td>
+                              <td> {{ $list->resourceperson->first_name }} {{ $list->resourceperson->last_name }}</td>
+                              <td> {{ $list->cordinator->name }}</td>
                           </tr>
                         @endforeach
                       </tbody>

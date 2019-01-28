@@ -27,7 +27,7 @@ class ResourcePersonController extends Controller
    			"cnic" => 'unique:resource_people|required|digits:14',
    			"designation" => 'max:100',
    			"gender" => 'max:10',
-   			"cell_number" => 'numeric|max:20',
+   			"cell_number" => 'digits:11',
    			"phone" => 'max:15',
    			"email" => 'required|email',
    			
@@ -35,8 +35,8 @@ class ResourcePersonController extends Controller
    		$person->first_name= $request->firstname;
    		$person->last_name= $request->lastname;
    		$person->cnic= $request->cnic;
-   		$person->designation= $request->designation;
-   		$person->gender= $request->gender;
+         $person->vendor_no= $request->vendor_no;
+   		$person->bank= $request->bank;
    		$person->cell_number= $request->cell_number;
    		$person->email= $request->email;
    		$person->save();

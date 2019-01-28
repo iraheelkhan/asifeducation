@@ -11,8 +11,8 @@ Participant List
                   @if(Session::has('message'))
                     <p class="alert alert-success">{!! Session::get('message') !!}</p>
                   @endif
-                  <a href="{{route('ResourcePersonAdd') }}" class="btn btn-primary">New Participant</a>
-                  <h2 class="card-title">Participant List</h2>
+                  <a href="{{route('ResourcePersonAdd') }}" class="btn btn-primary">New Resource Person</a>
+                  <h2 class="card-title">Resource Person List</h2>
                  
                   <div class="">
                     <table class="table" id="myTable"> 
@@ -21,12 +21,9 @@ Participant List
                           <th>S.No</th>
                           <th>Action</th>
                           <th width="150px">Full Name</th>
-                          <th width="150px">Date of Birth</th>
                           <th width="180px">CNIC/Passport</th>
-                          <th>Position/Post</th>
-                          <th>Department</th>
-                          <th>City/Province</th>
-                          <th>District</th>
+                          <th>Vendor No</th>
+                          <th>Bank</th>
                           <th>Email ID</th>
                         </tr>
                       </thead>
@@ -50,13 +47,10 @@ Participant List
                               </td>
                               
                               <td width="150px">{{ $list->first_name }} {{ $list->last_name }}</td>
-                              <td width="150px"> {{ $list->date_of_birth }}</td>
                               <td width="180px"> {{ $list->cnic }}</td>
-                              <td> {{ $list->designation }}</td>
-                              <td> {{ $list->department }}</td>
-                              <td> {{ $list->province}}
+                              <td> {{ $list->vendor_no }}</td>
+                              <td> {{ $list->bank}}
                               </td>
-                              <td width="180px"> {{ $list->district }}</td>
                               <td width="180px"> {{ $list->email }}</td>
                           </tr>
                         @endforeach

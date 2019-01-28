@@ -34,11 +34,16 @@ Route::get('/dashboard', 'DashboardController@index')->name('Dashboard');
 
 Route::get('participant/add', 'ParticipantController@add')->name('ParticipantAdd');
 Route::post('participant/create', 'ParticipantController@create')->name('ParticipantCreate');
+Route::post('participant/edit', 'ParticipantController@edit')->name('ParticipantEdit');
+Route::post('participant/update', 'ParticipantController@update')->name('ParticipantUpdate');
 Route::get('participant/list', 'ParticipantController@list')->name('ParticipantList');
+Route::delete('participant/delete', 'ParticipantController@delete')->name('ParticipantDelete');
 
 //Training routes goes here
 
 Route::get('training/add', 'TrainingController@add')->name('TrainingAdd');
+Route::post('training/edit', 'TrainingController@edit')->name('TrainingEdit');
+Route::post('training/update', 'TrainingController@update')->name('TrainingUpdate');
 Route::post('training/create', 'TrainingController@create')->name('TrainingCreate');
 Route::get('training/list', 'TrainingController@list')->name('TrainingList');
 Route::post('training/delete', 'TrainingController@delete')->name('TrainingDelete');
@@ -52,3 +57,7 @@ Route::post('enrol/participant', 'EnrolmentController@create')->name('EnrolmentC
 Route::get('resource/add', 'ResourcePersonController@add')->name('ResourcePersonAdd');
 Route::post('resource/create', 'ResourcePersonController@create')->name('ResourcePersonCreate');
 Route::get('resource/list', 'ResourcePersonController@list')->name('ResourcePersonList');
+
+// user insertion code goes here
+Route::get('user/add', 'HomeController@add')->name('UserAdd');
+Route::post('user/create', 'HomeController@createu')->name('UserCreate');

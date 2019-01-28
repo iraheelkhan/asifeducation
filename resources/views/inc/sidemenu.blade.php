@@ -16,13 +16,19 @@
                             <a class="js-arrow" href="{{route('ParticipantList')}}">
                                 <i class="fas fa-users"></i>Participants</a>
                         </li>
+                        @can('only-admin')
                         <li class="active has-sub">
                             <a class="js-arrow" href="{{route('TrainingList')}}">
                                 <i class="fas fa-calendar-week"></i>Trainings</a>
                         </li>
+                        @endcan
                         <li class="active has-sub">
-                            <a class="js-arrow" href="{{route('TrainingList')}}">
-                                <i class="fas fa-user-edit"></i>Held</a>
+                            <a class="js-arrow" href="{{route('ResourcePersonList')}}">
+                                <i class="fas fa-user-tag"></i>Resource Person</a>
+                        </li>
+                        <li class="active has-sub">
+                            <a class="js-arrow" href="{{route('UserAdd')}}">
+                                <i class="fas fa-user-shield "></i>Add User</a>
                         </li>
                     </ul>
                 </nav>
