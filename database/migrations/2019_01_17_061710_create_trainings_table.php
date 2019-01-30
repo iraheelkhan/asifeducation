@@ -22,8 +22,9 @@ class CreateTrainingsTable extends Migration
             $table->string('category')->nullable();
             $table->string('status');
             $table->time('time')->nullable();
-            $table->integer('duration')->nullable();
-            $table->string('venue')->nullable();
+            $table->date('from_date')->nullable();
+            $table->date('to_date')->nullable();
+            $table->integer('resource_person_id')->nullable();
             $table->timestamps();
         });
     }
