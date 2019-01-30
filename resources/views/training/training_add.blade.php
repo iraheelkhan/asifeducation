@@ -49,17 +49,16 @@
                             <div class="form-group">
                                 <label for="province" class=" form-control-label">Category</label>
                                 <select value="{{old('category')}}"  class="form-control" name="category">
-                                    <option value="education">Education</option>
-                                    <option value="development">Development</option>
-                                    <option value="microsoft">Microsoft</option>
+                                    <option value="Seminar">Seminar</option>
+                                    <option value="Workshop">Workshop</option>
+                                    <option value="Training">Training</option>
                                 </select>
                              </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="user_id" class=" form-control-label">Cordinator Person</label>
+                                <label for="user_id" class=" form-control-label">Cordinator </label>
                                 <select value="{{old('user_id')}}"  class="form-control" name="user_id">  
-
                                     @foreach($users as $user)   
                                         <option value="{{$user->id}}">{{$user->name}}</option>
                                     @endforeach

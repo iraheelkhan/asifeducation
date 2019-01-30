@@ -46,7 +46,26 @@ Participant List
                                 
                               </td>
                               
-                              <td width="150px">{{ $list->first_name }} {{ $list->last_name }}</td>
+                              <td width="150px">{{ $list->first_name }} {{ $list->last_name }}
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne{{$list->id}}" aria-expanded="true" aria-controls="collapseOne{{$list->id}}">
+                                            Show Trainings
+                                </button>
+                                <div id="collapseOne{{$list->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                    <ol>
+                                      @foreach($list->trainings as $training )
+                                        <li>
+                                        <form action="{{route('TrainingView')}}" method="POST">
+                                          {{ csrf_field() }}
+                                          <input type="hidden" name="id" value="{{$training->id}}">
+                                          
+                                          <button  type="submit" class="">{{$training->title }}</button>
+                                          
+                                        </form>
+                                        </li>
+                                      @endforeach
+                                    </ol>
+                              </td>
                               <td width="180px"> {{ $list->cnic }}</td>
                               <td> {{ $list->vendor_no }}</td>
                               <td> {{ $list->bank}}

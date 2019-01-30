@@ -50,9 +50,9 @@
                             <div class="form-group">
                                 <label for="province" class=" form-control-label">Category</label>
                                 <select value="{{(!old('province') ? $data->province : old('province'))}}" "  class="form-control" name="category">
-                                    <option value="education">Education</option>
-                                    <option value="development">Development</option>
-                                    <option value="microsoft">Microsoft</option>
+                                    <option value="Seminar">Seminar</option>
+                                    <option value="Workshop">Workshop</option>
+                                    <option value="Training">Training</option>
                                 </select>
                              </div>
                         </div>

@@ -22,12 +22,13 @@ Participant List
                           <th>Action</th>
                           <th width="180px">Title</th>
                           <th width="180px">Description</th>
-                          <th>From Date</th>
-                          <th>To Time</th>
+                          <th>From </th>
+                          <th>To </th>
                           <th>Status</th>
                           <th>Category</th>
                           <th>Resource Person</th>
                           <th>Cordinator</th>
+                          <th>Total </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -67,6 +68,7 @@ Participant List
                               <td> {{ $list->category}}</td>
                               <td> {{ $list->resourceperson->first_name }} {{ $list->resourceperson->last_name }}</td>
                               <td> {{ $list->cordinator->name }}</td>
+                              <td> {{count($list->enrolment)}}</td>
                           </tr>
                         @endforeach
                       </tbody>
