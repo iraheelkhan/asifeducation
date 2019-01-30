@@ -20,7 +20,7 @@ class ParticipantController extends Controller
 
     public function show(){
 
-    	return view('personal.showpersonal');
+    	
     }
 
     public function edit(Request $request){
@@ -41,7 +41,7 @@ class ParticipantController extends Controller
         "department" => 'max:50',
         "gender" => 'required|max:10',
         "province" => 'min:2',
-        "cell_number" => 'digits:11',
+        "cell_number" => 'digits:12',
         "phone" => 'max:15',
         "email" => 'required|email',
       ]);
@@ -75,7 +75,7 @@ class ParticipantController extends Controller
         "department" => 'max:50',
    			"gender" => 'required|max:10',
    			"province" => 'min:2',
-   			"cell_number" => 'digits:11',
+   			"cell_number" => 'digits:12',
    			"phone" => 'max:15',
    			"email" => 'required|email',
    			

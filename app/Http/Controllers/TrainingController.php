@@ -40,7 +40,6 @@ class TrainingController extends Controller
       $training->from_date= $request->from_date;
    		$training->to_date= $request->to_date;
    		$training->category= $request->category;
-      $training->user_id = $request->user_id;
       $training->resource_person_id = $request->resourceperson_id;
    		$training->status = "active";
    		$training->save();
@@ -57,6 +56,7 @@ class TrainingController extends Controller
 
    	public function list()
    	{
+      
    		$data = Training::all();
    		return view('training.training_list')->with('data', $data);
    	}
@@ -89,7 +89,6 @@ class TrainingController extends Controller
       $training->from_date= $request->from_date;
       $training->to_date= $request->to_date;
       $training->category= $request->category;
-      $training->user_id = $request->user_id;
       $training->resource_person_id = $request->resourceperson_id;
       $training->status = "active";
       $training->update();
@@ -126,6 +125,10 @@ class TrainingController extends Controller
 
         return view('training.training_view')->with('data',$data)->with('participant', $participant)->with('enrolls', $enrolls);
 
-      }
+    }
+
+    public function show($id){
+
+    }
 
 }

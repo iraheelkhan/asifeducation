@@ -24,10 +24,10 @@ class ResourcePersonController extends Controller
    		$validated = $request->validate([	
    			"firstname" => 'required|max:25',
    			"lastname" => 'required|max:25',
-   			"cnic" => 'unique:resource_people|required|digits:14',
+   			"cnic" => 'unique:resource_people|required|digits:13',
    			"designation" => 'max:100',
    			"gender" => 'max:10',
-   			"cell_number" => 'digits:11',
+   			"cell_number" => 'digits:12',
    			"phone" => 'max:15',
    			"email" => 'required|email',
    			

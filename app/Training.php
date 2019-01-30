@@ -14,4 +14,8 @@ class Training extends Model
     public function resourceperson(){
     	return $this->belongsTo('App\ResourcePerson', 'resource_person_id', 'id')->withDefault();
     }
+
+    public function enrolment(){
+    	return $this->hasMany('App\Enrolment', 'training_id', 'id');
+    }
 }
