@@ -20,6 +20,7 @@ Participant List
                         <tr>
                           <th>S.No</th>
                           <th>Action</th>
+                          <th>Picture</th>
                           <th width="150px">Full Name</th>
                           <th width="180px">CNIC/Passport</th>
                           <th>Vendor No</th>
@@ -44,6 +45,11 @@ Participant List
                                 <br>
                                   <a href="" class="btn btn-info"><i class="far fa-eye"></i></a>
                                 
+                              </td>
+                              <td>
+                               <img src='{{ asset("public/front/images/". $list->cv ) }}' />
+                                
+
                               </td>
                               
                               <td width="150px">{{ $list->first_name }} {{ $list->last_name }}

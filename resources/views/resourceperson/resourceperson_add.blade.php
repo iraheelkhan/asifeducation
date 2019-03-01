@@ -9,7 +9,7 @@
                     <small> Details</small>
                 </div>
 
-                <form action="{{ route('ResourcePersonCreate')}}" method="post">
+                <form action="{{ route('ResourcePersonCreate')}}" method="post"  enctype="multipart/form-data">
                     {{csrf_field()}}
                 <div class="card-body card-block">
                     @if ($errors->any())
@@ -56,6 +56,10 @@
                     <div class="form-group">
                         <label for="email" class=" form-control-label">Email</label>
                         <input type="email" id="email" placeholder="email@education.com.pk" class="form-control" name="email" value="{{old('email')}}">
+                    </div> 
+                    <div class="form-group">
+                        <label for="cv" class=" form-control-label">Upload CV</label>
+                        <input type="file" id="cv" placeholder="" class="form-control" name="cv" value="{{old('cv')}}">
                     </div>  
                     <div class="form-group">
                         <input class="form-control btn btn-primary" type="submit" name="submit">
